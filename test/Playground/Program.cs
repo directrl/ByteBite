@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using Playground.Scenes;
+using QuarkEngine;
 using QuarkEngine.Configuration;
-using QuarkEngine.Core;
 using Silk.NET.Maths;
 using Silk.NET.Windowing;
 using Window = QuarkEngine.Graphics.Window;

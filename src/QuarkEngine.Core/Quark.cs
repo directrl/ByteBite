@@ -1,4 +1,4 @@
-namespace QuarkEngine.Core {
+namespace QuarkEngine {
 	
 	public sealed class Quark {
 

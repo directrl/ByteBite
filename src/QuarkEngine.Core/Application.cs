@@ -6,7 +6,7 @@ using Silk.NET.GLFW;
 using Silk.NET.Windowing;
 using Window = QuarkEngine.Graphics.Window;
 
-namespace QuarkEngine.Core {
+namespace QuarkEngine {
 	
 	public class Application {
 		

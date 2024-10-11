@@ -5,6 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <RootNamespace>QuarkEngine</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\QuarkEngine.Graphics\QuarkEngine.Graphics.csproj" />
     <ProjectReference Include="..\QuarkEngine.Configuration\QuarkEngine.Configuration.csproj" />
   </ItemGroup>
 </Project>
