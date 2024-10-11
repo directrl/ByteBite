@@ -37,10 +37,16 @@ namespace QuarkEngine.Configuration {
 			if(value != null) return value.Value<T>();
 			return default;
 		}
+		
+		public T GetObject<T>(string key) {
+			var value = JsonConfig[key];
+			if(value != null) return value.ToObject<T>();
+			return default;
+		}
 
 		public void Set<T>(string key, T value) {
 			var prevValue = JsonConfig[key];
-			if(prevValue != null) OnSettingChange(key, value, prevValue.Value<T>());
+			if(prevValue != null) OnSettingChange(key, prevValue.Value<T>(), value);
 			JsonConfig[key] = JToken.FromObject(value);
 		}
 		
