@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using QuarkEngine.Configuration;
 using QuarkEngine.Graphics;
 using QuarkEngine.Graphics.Scene;
 using Silk.NET.GLFW;
@@ -13,10 +14,20 @@ namespace QuarkEngine.Core {
 		public bool Running { get; protected set; }
 
 		public List<Window> Windows { get; } = new();
+		public GameSettings GameSettings { get; }
 
 		protected Application(string id) {
 			Quark._currentApplication = this;
 			Id = id;
+
+			Directories.Resolve(id);
+
+			GameSettings = new(new FileInfo(Path.Combine(
+				Directories.ConfigRoot.FullName, "default.json")));
+
+			AppDomain.CurrentDomain.ProcessExit += (s, e) => {
+				Shutdown();
+			};
 		}
 		
 		public virtual void Initialize() { }
@@ -38,8 +49,13 @@ namespace QuarkEngine.Core {
 					window.Impl.DoRender();
 				}
 			}
+		}
 
+		public void Shutdown() {
+			Console.WriteLine("Shutting down");
 			Running = false;
+			
+			GameSettings.Dispose();
 		}
 	}
 }

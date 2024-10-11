@@ -1,4 +1,6 @@
-﻿using Playground.Scenes;
+﻿using Newtonsoft.Json.Linq;
+using Playground.Scenes;
+using QuarkEngine.Configuration;
 using QuarkEngine.Core;
 using Silk.NET.Maths;
 using Silk.NET.Windowing;
@@ -15,6 +17,15 @@ namespace Playground {
 			window.Scene = new EmptyScene();
 
 			Windows.Add(window);
+
+			string sT = GameSettings.GetOrDefault("st", "hello");
+			double dT = GameSettings.GetOrDefault("dt", 4.642);
+			float fT = GameSettings.GetOrDefault("ft", 598.3129f);
+			JObject a = new JObject();
+			a["test"] = 3;
+			a["ads"] = "sdasd";
+			JObject joT = GameSettings.GetOrDefault("jot", a);
+			byte bT = GameSettings.GetOrDefault("bt", (byte) 32);
 		}
 
 		public static void Main(string[] args) {
