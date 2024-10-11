@@ -1,5 +1,5 @@
-using Quark.Graphics.Scene;
-using Quark.Graphics.Windowing;
+using QuarkEngine.Graphics;
+using QuarkEngine.Graphics.Scene;
 using Silk.NET.OpenGL;
 
 namespace Playground.Scenes {
@@ -7,6 +7,6 @@ namespace Playground.Scenes {
 	public class EmptyScene : IScene {
 
 		public void Update(double delta) { }
-		public void Render<T>(WindowBase<T> window, GL gl) { }
+		public void Render(GL gl, double delta) { }
 	}
 }

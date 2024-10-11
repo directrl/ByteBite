@@ -4,7 +4,6 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RootNamespace>Quark.Core</RootNamespace>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
@@ -17,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Quark.Graphics\Quark.Graphics.csproj" />
-    <ProjectReference Include="..\Quark.Utility\Quark.Utility.csproj" />
+    <ProjectReference Include="..\QuarkEngine.Graphics\QuarkEngine.Graphics.csproj" />
+    <ProjectReference Include="..\QuarkEngine.Common\QuarkEngine.Common.csproj" />
   </ItemGroup>
 </Project>

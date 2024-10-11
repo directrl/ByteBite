@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Silk.NET.GLFW;
 
-namespace Quark.Graphics {
+namespace QuarkEngine.Graphics {
 	
 	public unsafe class GLFW {
 
@@ -18,9 +18,8 @@ namespace Quark.Graphics {
 		}
 
 		public static string GetErrorString() {
-			byte* rawDescription;
-			var error = GLFW.API.GetError(out rawDescription);
-				
+			var error = API.GetError(out byte* rawDescription);
+			
 			string description = "";
 			if(rawDescription != null) description = new string((sbyte*) rawDescription);
 

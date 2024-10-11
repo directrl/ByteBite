@@ -1,22 +1,19 @@
 ﻿using Playground.Scenes;
-using Quark.Core;
-using Quark.Graphics.Windowing;
+using QuarkEngine.Core;
 using Silk.NET.Maths;
+using Silk.NET.Windowing;
+using Window = QuarkEngine.Graphics.Window;
 
 namespace Playground {
 
-	public class Program : GLFWApplication {
+	public class Program : Application {
 		
 		private Program() : base("playground") { }
 
 		public override void Initialize() {
-			var window = new GLFWWindow {
-				Position = new Vector2D<int>(-1, -1),
-				Scene = new EmptyScene(),
-				Title = "Playground"
-			};
+			var window = Window.Create();
+			window.Scene = new EmptyScene();
 
-			window.Show();
 			Windows.Add(window);
 		}
 

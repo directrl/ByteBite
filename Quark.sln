@@ -5,15 +5,15 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{15BB5254-9E2C-4CDA-82F3-BC422DD1043E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quark.Core", "src\Quark.Core\Quark.Core.csproj", "{1D6744CB-A3D6-4555-A100-869FBA63D045}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuarkEngine.Core", "src\QuarkEngine.Core\QuarkEngine.Core.csproj", "{1D6744CB-A3D6-4555-A100-869FBA63D045}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{1A130356-51AD-4431-ABB1-22E10198C244}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playground", "test\Playground\Playground.csproj", "{E28CDE56-3233-4780-ACE5-F99317936C5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quark.Graphics", "src\Quark.Graphics\Quark.Graphics.csproj", "{777EEFB9-5AE1-42D2-BD5A-B84D67EFF61B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuarkEngine.Graphics", "src\QuarkEngine.Graphics\QuarkEngine.Graphics.csproj", "{777EEFB9-5AE1-42D2-BD5A-B84D67EFF61B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quark.Utility", "src\Quark.Utility\Quark.Utility.csproj", "{B2E5E037-4EF1-46EB-A118-66CB210BC668}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuarkEngine.Common", "src\QuarkEngine.Common\QuarkEngine.Common.csproj", "{B2E5E037-4EF1-46EB-A118-66CB210BC668}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
