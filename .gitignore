@@ -512,3 +512,8 @@ msbuild.wrn
 
 # Visual Studio 2015
 .vs/
+
+# nix
+/.nix
+/.profile
+/.nix-profile

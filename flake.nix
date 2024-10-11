@@ -15,7 +15,7 @@
 		in {
 			devShell = universal (pkgs: 
 				(pkgs.mkShell rec {
-					name = "ByteBite";
+					name = "Quark";
 
 					libs = with pkgs; [
 						freetype
