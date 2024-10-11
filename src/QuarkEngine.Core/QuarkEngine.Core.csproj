@@ -17,6 +17,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\QuarkEngine.Graphics\QuarkEngine.Graphics.csproj" />
-    <ProjectReference Include="..\QuarkEngine.Common\QuarkEngine.Common.csproj" />
+    <ProjectReference Include="..\QuarkEngine.Configuration\QuarkEngine.Configuration.csproj" />
   </ItemGroup>
 </Project>

@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playground", "test\Playgrou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuarkEngine.Graphics", "src\QuarkEngine.Graphics\QuarkEngine.Graphics.csproj", "{777EEFB9-5AE1-42D2-BD5A-B84D67EFF61B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuarkEngine.Common", "src\QuarkEngine.Common\QuarkEngine.Common.csproj", "{B2E5E037-4EF1-46EB-A118-66CB210BC668}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuarkEngine.Configuration", "src\QuarkEngine.Configuration\QuarkEngine.Configuration.csproj", "{B2E5E037-4EF1-46EB-A118-66CB210BC668}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

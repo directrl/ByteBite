@@ -1,4 +1,4 @@
-namespace QuarkEngine.Common.Configuration {
+namespace QuarkEngine.Configuration {
 	
 	public class EngineSettings {
 

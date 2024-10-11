@@ -1,5 +1,5 @@
 using System.Diagnostics;
-using QuarkEngine.Common.Configuration;
+using QuarkEngine.Configuration;
 using QuarkEngine.Graphics.Scene;
 using Silk.NET.Maths;
 using Silk.NET.OpenGL;
