@@ -517,3 +517,5 @@ msbuild.wrn
 /.nix
 /.profile
 /.nix-profile
+
+/subprojects
