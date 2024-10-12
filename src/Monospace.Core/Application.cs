@@ -14,6 +14,9 @@ namespace Monospace {
 		public List<Window> Windows { get; } = new();
 		public GameSettings GameSettings { get; }
 
+		public Resources EngineResources { get; } = new("Monospace");
+		public Resources GameResources { get; init; }
+
 		protected Application(string id) {
 			Monospace._currentApplication = this;
 			Id = id;

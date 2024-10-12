@@ -1,14 +1,17 @@
+using Monospace.Graphics.Interfaces;
 using Monospace.Input;
 using Silk.NET.Input;
 using Silk.NET.OpenGL;
 
 namespace Monospace.Graphics.Scene {
 	
-	public abstract class SceneBase : IDisposable {
+	public abstract class SceneBase : IDisposable, IRenderable {
 		
 		public string Id { get; }
 		public KeyBindings KeyBindings { get; }
+		
 		public IMouse? Mouse { get; set; }
+		public IKeyboard? Keyboard { get; set; }
 
 		protected SceneBase(string id) {
 			Id = id;
@@ -22,7 +25,11 @@ namespace Monospace.Graphics.Scene {
 		public virtual void OnUnload() { }
 
 		public abstract void Update(double delta);
-		public abstract void Render(GL gl, double delta);
+		public abstract void Render(GL gl);
+
+		void IRenderable.Render(GL gl) {
+			Render(gl);
+		}
 
 		public void Dispose() {
 			GC.SuppressFinalize(this);

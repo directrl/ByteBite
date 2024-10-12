@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playground", "test\Playgrou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monospace.Configuration", "src\Monospace.Configuration\Monospace.Configuration.csproj", "{B2E5E037-4EF1-46EB-A118-66CB210BC668}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monospace.Extensions", "src\Monospace.Extensions\Monospace.Extensions.csproj", "{53DA635D-7D89-4C7A-A07E-269A3FEC5E38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,10 +36,15 @@ Global
 		{B2E5E037-4EF1-46EB-A118-66CB210BC668}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2E5E037-4EF1-46EB-A118-66CB210BC668}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2E5E037-4EF1-46EB-A118-66CB210BC668}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53DA635D-7D89-4C7A-A07E-269A3FEC5E38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53DA635D-7D89-4C7A-A07E-269A3FEC5E38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53DA635D-7D89-4C7A-A07E-269A3FEC5E38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53DA635D-7D89-4C7A-A07E-269A3FEC5E38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1D6744CB-A3D6-4555-A100-869FBA63D045} = {15BB5254-9E2C-4CDA-82F3-BC422DD1043E}
 		{E28CDE56-3233-4780-ACE5-F99317936C5C} = {1A130356-51AD-4431-ABB1-22E10198C244}
 		{B2E5E037-4EF1-46EB-A118-66CB210BC668} = {15BB5254-9E2C-4CDA-82F3-BC422DD1043E}
+		{53DA635D-7D89-4C7A-A07E-269A3FEC5E38} = {15BB5254-9E2C-4CDA-82F3-BC422DD1043E}
 	EndGlobalSection
 EndGlobal

@@ -18,5 +18,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Monospace.Configuration\Monospace.Configuration.csproj" />
+    <ProjectReference Include="..\Monospace.Extensions\Monospace.Extensions.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\res\Monospace.Core\**\*"/>
   </ItemGroup>
 </Project>

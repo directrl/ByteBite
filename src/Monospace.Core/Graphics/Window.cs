@@ -15,6 +15,7 @@ namespace Monospace.Graphics {
 		public SceneBase? Scene {
 			get => _scene;
 			set {
+				value?.OnUnload();
 				_scene = value;
 
 				if(Input != null) {
@@ -22,11 +23,13 @@ namespace Monospace.Graphics {
 						Scene.Mouse = Input.Mice[0];
 					}
 				}
+				
+				value?.OnLoad(this);
 			}
 		}
 
-		protected GL? GL { get; private set; }
-		protected IInputContext? Input { get; private set; }
+		public GL? GL { get; private set; }
+		public IInputContext? Input { get; private set; }
 		
 		public Window(IWindow impl) {
 			Impl = impl;
@@ -36,6 +39,8 @@ namespace Monospace.Graphics {
 			Impl.Load += () => {
 				GL = Impl.CreateOpenGL();
 				Input = Impl.CreateInput();
+				
+				GL.Viewport(Impl.FramebufferSize);
 				
 				foreach(var keyboard in Input.Keyboards) {
 					keyboard.KeyUp += (keyboard, key, scancode) => {
@@ -56,6 +61,8 @@ namespace Monospace.Graphics {
 				Scene?.Update(delta);
 
 				if(Input != null) {
+					if(Scene != null) Scene.Keyboard = Input.Keyboards[0];
+					
 					foreach(var keyboard in Input.Keyboards) {
 						Scene?.KeyBindings.Update(keyboard);
 					}
@@ -63,7 +70,22 @@ namespace Monospace.Graphics {
 			};
 			
 			Impl.Render += delta => {
-				if(GL != null) Scene?.Render(GL, delta);
+				if(GL != null) {
+					OpenGL.OpenGL.EnableDefaults(GL);
+					
+					GL.Clear((uint) (ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit));
+					Scene?.Render(GL);
+					
+					var error = GL.GetError();
+
+					switch(error) {
+						case GLEnum.NoError:
+							break;
+						default:
+							Console.WriteLine($"OpenGL Error: {error}");
+							break;
+					}
+				}
 			};
 			
 			Impl.Initialize();

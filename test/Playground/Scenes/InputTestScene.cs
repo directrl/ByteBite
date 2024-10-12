@@ -5,14 +5,14 @@ using Silk.NET.OpenGL;
 
 namespace Playground.Scenes {
 	
-	public class EmptyScene : SceneBase {
+	public class InputTestScene : SceneBase {
 
 		private KeyBinding testBinding;
 		private KeyBinding test2Binding;
 		private KeyBinding test3Binding;
 		private KeyBinding test4Binding;
 
-		public EmptyScene() : base("empty") {
+		public InputTestScene() : base("input_test") {
 			testBinding = KeyBindings.Register(new("test", Key.ControlLeft, Key.A));
 			test2Binding = KeyBindings.Register(new("test2", Key.ControlLeft, Key.S));
 			test3Binding = KeyBindings.Register(new("test3", Key.ShiftLeft));
@@ -48,6 +48,6 @@ namespace Playground.Scenes {
 			}
 		}
 		
-		public override void Render(GL gl, double delta) { }
+		public override void Render(GL gl) { }
 	}
 }
