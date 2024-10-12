@@ -14,19 +14,6 @@ public class KeyBindings : IDisposable {
 	public KeyBindings(SceneBase scene) {
 		Settings = new(new FileInfo(Path.Combine(
 			Directories.ConfigRoot.FullName, $"keys.{scene.Id}.json")));
-
-		// Settings.SettingChange += (key, from, to) => {
-		// 	if(Bindings.ContainsKey(key)) {
-		// 		var jObject = (JObject) from;
-		// 		var binding = jObject.ToObject<KeyBinding>();
-		//
-		// 		if(binding != null) {
-		// 			Bindings[key] = binding;
-		// 		} else {
-		// 			Console.WriteLine($"Could not update changed keybinding {key}");
-		// 		}
-		// 	}
-		// };
 	}
 
 	public void Register(ref KeyBinding binding) {

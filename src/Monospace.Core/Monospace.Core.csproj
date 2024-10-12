@@ -19,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Monospace.Configuration\Monospace.Configuration.csproj" />
     <ProjectReference Include="..\Monospace.Extensions\Monospace.Extensions.csproj" />
+    <ProjectReference Include="..\Monospace.Logging\Monospace.Logging.csproj" />
   </ItemGroup>
   
   <ItemGroup>

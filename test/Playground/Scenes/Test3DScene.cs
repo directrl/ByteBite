@@ -67,26 +67,9 @@ namespace Playground.Scenes {
 					// Back face
 					7, 6, 4, 7, 4, 5,
 				}
-				/*new float[]{
-					-0.5f, 0.5f, 0.0f,
-					-0.5f, -0.5f, 0.0f,
-					0.5f, -0.5f, 0.0f,
-					0.5f, 0.5f, 0.0f,
-				},
-			new byte[]{
-				127, 0, 0,
-				0, 127, 0,
-				0, 0, 127,
-				0, 127, 127,
-			},
-			new int[]{
-					0, 1, 3, 3, 1, 2,
-				}*/
 			);
 
 			Model = new("quad", Mesh);
-
-			
 			Mouse.MouseMove += CameraMove;
 		}
 		
@@ -104,7 +87,6 @@ namespace Playground.Scenes {
 			var fDelta = (float) delta;
 			
 			Camera.Position.Z += 0.3f * fDelta;
-
 			Model.Position.Y += 0.12f * (float)delta;
 		}
 
@@ -112,7 +94,6 @@ namespace Playground.Scenes {
 			base.Render(gl);
 
 			MainShader.SetUniform("model", Model.ModelMatrix);
-			//mesh?.Render();
 			Model?.Render(gl);
 		}
 

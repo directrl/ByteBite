@@ -82,7 +82,7 @@ namespace Monospace.Graphics {
 						case GLEnum.NoError:
 							break;
 						default:
-							Console.WriteLine($"OpenGL Error: {error}");
+							Monospace.EngineLogger.Error($"OpenGL Error: {error}");
 							break;
 					}
 				}

@@ -16,9 +16,9 @@ namespace Monospace.Graphics.Scene {
 
 			MainShader = new ShaderProgram(window.GL,
 				new(ShaderType.FragmentShader,
-					Monospace.CurrentApplication?.EngineResources[ResourceType.SHADER, "scene.frag"].ReadString()),
+					Monospace.EngineResources[ResourceType.SHADER, "scene.frag"].ReadString()),
 				new(ShaderType.VertexShader,
-					Monospace.CurrentApplication?.EngineResources[ResourceType.SHADER, "scene.vert"].ReadString())
+					Monospace.EngineResources[ResourceType.SHADER, "scene.vert"].ReadString())
 			);
 		}
 

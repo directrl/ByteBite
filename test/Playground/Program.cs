@@ -1,17 +1,18 @@
 ﻿using Newtonsoft.Json.Linq;
 using Playground.Scenes;
-using Monospace;
 using Monospace.Configuration;
+using Monospace.Logging;
 using Silk.NET.Maths;
 using Silk.NET.Windowing;
 using Window = Monospace.Graphics.Window;
 
 namespace Playground {
 
-	public class Program : Application {
+	public class Program : Monospace.Monospace {
 
 		private Program() : base("playground") {
-			GameResources = new("Playground");
+			AppLogger = LoggerFactory.CreateDefaultConfiugration(LoggerPurpose.Application).CreateLogger();
+			AppResources = new("Playground");
 		}
 
 		public override void Initialize() {

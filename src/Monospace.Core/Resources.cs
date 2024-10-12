@@ -39,7 +39,10 @@ namespace Monospace {
 
 		public string? ReadString() {
 			using(var stream = GetStream()) {
-				if(stream == null) return null;
+				if(stream == null) {
+					Monospace.EngineLogger.Warning($"Failed to get stream for resource {this}");
+					return null;
+				}
 				
 				using(var reader = new StreamReader(stream)) {
 					return reader.ReadToEnd();
