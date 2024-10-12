@@ -6,7 +6,7 @@ namespace QuarkEngine.Configuration {
 
 	public delegate void SettingChangeEvent(string key, object from, object to);
 	
-	public class GameSettings : IDisposable {
+	public class GameSettings {
 		
 		private FileInfo ConfigFile { get; }
 		private JObject JsonConfig { get; }
@@ -23,6 +23,12 @@ namespace QuarkEngine.Configuration {
 			ConfigFile = configFile;
 			JsonConfig = JObject.Parse(File.ReadAllText(configFile.FullName));
 		}
+
+		~GameSettings() {
+			Save();
+		}
+
+		public bool Has(string key) => JsonConfig.ContainsKey(key);
 
 		public T GetOrDefault<T>(string key, T defaultValue) {
 			var value = JsonConfig[key];
@@ -50,7 +56,13 @@ namespace QuarkEngine.Configuration {
 			JsonConfig[key] = JToken.FromObject(value);
 		}
 		
-		public void Dispose() {
+		public void SetObject<T>(string key, T value) {
+			var prevValue = JsonConfig[key];
+			if(prevValue != null) OnSettingChange(key, prevValue.ToObject<T>(), value);
+			JsonConfig[key] = JToken.FromObject(value);
+		}
+
+		public void Save() {
 			using(var writer = ConfigFile.CreateText())
 			using(var json = new JsonTextWriter(writer)) {
 				json.Indentation = 4;

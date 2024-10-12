@@ -54,8 +54,12 @@ namespace QuarkEngine {
 		public void Shutdown() {
 			Console.WriteLine("Shutting down");
 			Running = false;
+
+			foreach(var window in Windows) {
+				window.Dispose();
+			}
 			
-			GameSettings.Dispose();
+			GameSettings.Save();
 		}
 	}
 }

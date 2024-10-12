@@ -14,7 +14,8 @@ namespace Playground {
 
 		public override void Initialize() {
 			var window = Window.Create();
-			window.Scene = new EmptyScene();
+			var scene = new EmptyScene();
+			window.Scene = scene;
 
 			Windows.Add(window);
 
@@ -26,6 +27,10 @@ namespace Playground {
 			a["ads"] = "sdasd";
 			JObject joT = GameSettings.GetOrDefault("jot", a);
 			byte bT = GameSettings.GetOrDefault("bt", (byte) 32);
+
+			foreach(var binding in scene.KeyBindings.Bindings.Values) {
+				Console.WriteLine(binding);
+			}
 		}
 
 		public static void Main(string[] args) {

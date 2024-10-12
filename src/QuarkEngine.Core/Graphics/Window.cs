@@ -1,18 +1,34 @@
 using System.Diagnostics;
 using QuarkEngine.Configuration;
 using QuarkEngine.Graphics.Scene;
+using QuarkEngine.Input;
+using Silk.NET.Input;
 using Silk.NET.Maths;
 using Silk.NET.OpenGL;
 using Silk.NET.Windowing;
 
 namespace QuarkEngine.Graphics {
 
-	public class Window {
+	public class Window : IDisposable {
 
 		public IWindow Impl { get; }
-		public IScene? Scene { get; set; }
-		
+
+		private SceneBase? _scene;
+		public SceneBase? Scene {
+			get => _scene;
+			set {
+				_scene = value;
+
+				if(Input != null) {
+					if(Input.Mice.Count > 0 && Scene != null) {
+						Scene.Mouse = Input.Mice[0];
+					}
+				}
+			}
+		}
+
 		protected GL? GL { get; private set; }
+		protected IInputContext? Input { get; private set; }
 		
 		public Window(IWindow impl) {
 			Impl = impl;
@@ -21,6 +37,17 @@ namespace QuarkEngine.Graphics {
 
 			Impl.Load += () => {
 				GL = Impl.CreateOpenGL();
+				Input = Impl.CreateInput();
+				
+				foreach(var keyboard in Input.Keyboards) {
+					keyboard.KeyUp += (keyboard, key, scancode) => {
+						Scene?.KeyBindings.Input(keyboard, KeyAction.Release, key);
+					};
+				
+					keyboard.KeyDown += (keyboard, key, scancode) => {
+						Scene?.KeyBindings.Input(keyboard, KeyAction.Press, key);
+					};
+				}
 			};
 
 			Impl.FramebufferResize += size => {
@@ -29,6 +56,12 @@ namespace QuarkEngine.Graphics {
 			
 			Impl.Update += delta => {
 				Scene?.Update(delta);
+
+				if(Input != null) {
+					foreach(var keyboard in Input.Keyboards) {
+						Scene?.KeyBindings.Update(keyboard);
+					}
+				}
 			};
 			
 			Impl.Render += delta => {
@@ -39,14 +72,19 @@ namespace QuarkEngine.Graphics {
 			Impl.IsVisible = true;
 		}
 
-		~Window() {
+		public void Dispose() {
+			GC.SuppressFinalize(this);
+			
+			Scene?.Dispose();
 			GL?.Dispose();
+			Input?.Dispose();
 			Impl.Reset();
 			Impl.Dispose();
 		}
 
 		public void Close() {
 			Impl.IsClosing = true;
+			Scene?.OnUnload();
 		}
 
 		public static Window Create(WindowOptions? options = null) {
