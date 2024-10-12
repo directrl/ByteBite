@@ -1,8 +1,8 @@
 using System.Numerics;
-using Monospace.Graphics;
-using Monospace.Graphics._3D;
-using Monospace.Graphics._3D.Camera;
-using Monospace.Graphics.Scene;
+using MonospaceEngine.Graphics;
+using MonospaceEngine.Graphics._3D;
+using MonospaceEngine.Graphics._3D.Camera;
+using MonospaceEngine.Graphics.Scene;
 using Silk.NET.Input;
 using Silk.NET.OpenGL;
 

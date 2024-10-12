@@ -1,5 +1,5 @@
-using Monospace.Graphics.Scene;
-using Monospace.Input;
+using MonospaceEngine.Graphics.Scene;
+using MonospaceEngine.Input;
 using Silk.NET.Input;
 using Silk.NET.OpenGL;
 

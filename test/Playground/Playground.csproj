@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Monospace.Core\Monospace.Core.csproj" />
+    <ProjectReference Include="..\..\src\MonospaceEngine.Core\MonospaceEngine.Core.csproj" />
   </ItemGroup>
 
 </Project>

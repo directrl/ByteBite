@@ -1,14 +1,13 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using MonospaceEngine.Logging;
+using Newtonsoft.Json.Linq;
 using Playground.Scenes;
-using Monospace.Configuration;
-using Monospace.Logging;
 using Silk.NET.Maths;
 using Silk.NET.Windowing;
-using Window = Monospace.Graphics.Window;
+using Window = MonospaceEngine.Graphics.Window;
 
 namespace Playground {
 
-	public class Program : Monospace.Monospace {
+	public class Program : MonospaceEngine.Monospace {
 
 		private Program() : base("playground") {
 			AppLogger = LoggerFactory.CreateDefaultConfiugration(LoggerPurpose.Application).CreateLogger();

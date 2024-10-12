@@ -5,17 +5,17 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{15BB5254-9E2C-4CDA-82F3-BC422DD1043E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monospace.Core", "src\Monospace.Core\Monospace.Core.csproj", "{1D6744CB-A3D6-4555-A100-869FBA63D045}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonospaceEngine.Core", "src\MonospaceEngine.Core\MonospaceEngine.Core.csproj", "{1D6744CB-A3D6-4555-A100-869FBA63D045}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{1A130356-51AD-4431-ABB1-22E10198C244}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playground", "test\Playground\Playground.csproj", "{E28CDE56-3233-4780-ACE5-F99317936C5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monospace.Configuration", "src\Monospace.Configuration\Monospace.Configuration.csproj", "{B2E5E037-4EF1-46EB-A118-66CB210BC668}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonospaceEngine.Configuration", "src\MonospaceEngine.Configuration\MonospaceEngine.Configuration.csproj", "{B2E5E037-4EF1-46EB-A118-66CB210BC668}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monospace.Extensions", "src\Monospace.Extensions\Monospace.Extensions.csproj", "{53DA635D-7D89-4C7A-A07E-269A3FEC5E38}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonospaceEngine.Extensions", "src\MonospaceEngine.Extensions\MonospaceEngine.Extensions.csproj", "{53DA635D-7D89-4C7A-A07E-269A3FEC5E38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monospace.Logging", "src\Monospace.Logging\Monospace.Logging.csproj", "{93338D73-E421-4BE0-B0B5-57621493DC2F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonospaceEngine.Logging", "src\MonospaceEngine.Logging\MonospaceEngine.Logging.csproj", "{93338D73-E421-4BE0-B0B5-57621493DC2F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
