@@ -1,7 +1,6 @@
-using System.Diagnostics.CodeAnalysis;
 using Silk.NET.GLFW;
 
-namespace QuarkEngine.Graphics {
+namespace Monospace.Graphics {
 	
 	public unsafe class GLFW {
 

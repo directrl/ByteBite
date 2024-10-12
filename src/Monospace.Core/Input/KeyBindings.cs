@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using Newtonsoft.Json.Linq;
-using QuarkEngine.Configuration;
-using QuarkEngine.Graphics.Scene;
+﻿using Monospace.Configuration;
+using Monospace.Graphics.Scene;
 using Silk.NET.Input;
 
-namespace QuarkEngine.Input;
+namespace Monospace.Input;
 
 public class KeyBindings : IDisposable {
 

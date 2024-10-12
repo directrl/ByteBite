@@ -1,12 +1,10 @@
 using System.Diagnostics;
-using QuarkEngine.Configuration;
-using QuarkEngine.Graphics;
-using QuarkEngine.Graphics.Scene;
+using Monospace.Configuration;
 using Silk.NET.GLFW;
 using Silk.NET.Windowing;
-using Window = QuarkEngine.Graphics.Window;
+using Window = Monospace.Graphics.Window;
 
-namespace QuarkEngine {
+namespace Monospace {
 	
 	public class Application {
 		
@@ -17,7 +15,7 @@ namespace QuarkEngine {
 		public GameSettings GameSettings { get; }
 
 		protected Application(string id) {
-			Quark._currentApplication = this;
+			Monospace._currentApplication = this;
 			Id = id;
 
 			Directories.Resolve(id);

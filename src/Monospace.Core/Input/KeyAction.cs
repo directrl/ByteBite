@@ -1,4 +1,4 @@
-namespace QuarkEngine.Input {
+namespace Monospace.Input {
 	
 	public enum KeyAction {
 		

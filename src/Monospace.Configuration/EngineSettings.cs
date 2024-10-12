@@ -1,4 +1,4 @@
-namespace QuarkEngine.Configuration {
+namespace Monospace.Configuration {
 	
 	public class EngineSettings {
 

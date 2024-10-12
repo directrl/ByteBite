@@ -1,8 +1,7 @@
 using System.Diagnostics;
-using QuarkEngine.Configuration;
 using Silk.NET.Input;
 
-namespace QuarkEngine.Input {
+namespace Monospace.Input {
 	
 	public class KeyBinding {
 		

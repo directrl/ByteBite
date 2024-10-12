@@ -1,6 +1,5 @@
-using QuarkEngine.Graphics;
-using QuarkEngine.Graphics.Scene;
-using QuarkEngine.Input;
+using Monospace.Graphics.Scene;
+using Monospace.Input;
 using Silk.NET.Input;
 using Silk.NET.OpenGL;
 

@@ -1,8 +1,8 @@
-using QuarkEngine.Input;
+using Monospace.Input;
 using Silk.NET.Input;
 using Silk.NET.OpenGL;
 
-namespace QuarkEngine.Graphics.Scene {
+namespace Monospace.Graphics.Scene {
 	
 	public abstract class SceneBase : IDisposable {
 		

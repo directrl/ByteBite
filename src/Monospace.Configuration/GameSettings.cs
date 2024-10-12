@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace QuarkEngine.Configuration {
+namespace Monospace.Configuration {
 
 	public delegate void SettingChangeEvent(string key, object from, object to);
 	

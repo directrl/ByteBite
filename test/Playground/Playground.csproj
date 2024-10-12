@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\QuarkEngine.Core\QuarkEngine.Core.csproj" />
+    <ProjectReference Include="..\..\src\Monospace.Core\Monospace.Core.csproj" />
   </ItemGroup>
 
 </Project>

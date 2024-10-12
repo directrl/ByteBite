@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <RootNamespace>QuarkEngine</RootNamespace>
+    <RootNamespace>Monospace</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\QuarkEngine.Configuration\QuarkEngine.Configuration.csproj" />
+    <ProjectReference Include="..\Monospace.Configuration\Monospace.Configuration.csproj" />
   </ItemGroup>
 </Project>

@@ -1,13 +1,11 @@
-using System.Diagnostics;
-using QuarkEngine.Configuration;
-using QuarkEngine.Graphics.Scene;
-using QuarkEngine.Input;
+using Monospace.Configuration;
+using Monospace.Graphics.Scene;
+using Monospace.Input;
 using Silk.NET.Input;
-using Silk.NET.Maths;
 using Silk.NET.OpenGL;
 using Silk.NET.Windowing;
 
-namespace QuarkEngine.Graphics {
+namespace Monospace.Graphics {
 
 	public class Window : IDisposable {
 
