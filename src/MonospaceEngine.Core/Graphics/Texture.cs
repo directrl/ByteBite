@@ -78,9 +78,9 @@ namespace MonospaceEngine.Graphics {
 						}
 					}
 				});
+				
+				GLManager.SetDefaultsForTextureCreation(gl);
 			}
-			
-			GLManager.SetDefaultsForTextureCreation(gl);
 			
 			Monospace.EngineLogger.Verbose($"Caching texture [{name}]");
 			TextureCache.TEXTURES[(gl, name)] = texture;

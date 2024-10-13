@@ -24,7 +24,7 @@ namespace MonospaceEngine.Graphics {
 	
 	public class Model : IShaderRenderable {
 
-		private readonly GL _gl;
+		protected readonly GL _gl;
 		private readonly Dictionary<Mesh, Material> _inner = new();
 
 		public string Name;
@@ -162,7 +162,7 @@ namespace MonospaceEngine.Graphics {
 					material.SpecularColor = new(1, 1, 1);
 				}
 
-				material.Albedo = Color.White;
+				material.Albedo = Color.Red;
 				
 				material.DiffuseMaps = ProcessMaterialTextures(aiScene, aiMaterial,
 					TextureType.Diffuse, "texture_diffuse");

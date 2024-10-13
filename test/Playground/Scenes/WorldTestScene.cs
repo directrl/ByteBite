@@ -9,6 +9,7 @@ using MonospaceEngine.Entity.System;
 using MonospaceEngine.Graphics;
 using MonospaceEngine.Graphics._3D;
 using MonospaceEngine.Graphics._3D.Light;
+using MonospaceEngine.Graphics._3D.Objects;
 using MonospaceEngine.Graphics.Scene;
 using MonospaceEngine.UI;
 using Silk.NET.Input;
@@ -56,7 +57,9 @@ namespace Playground.Scenes {
 			//
 			// _world.Create(new WorldObject3D { Object = new(VoxelEntity.MESH, mat) });
 
-			VoxelEntity.Create(_world);
+			//VoxelEntity.Create(_world);
+			var graphic = TextureLoader.Load(Program.AppResources[ResourceType.TEXTURE, "graphic"]);
+			_world.Create(new WorldObject3D { Object = new Billboard(graphic) });
 
 			_entityRenderSystem = new(_world, GL);
 

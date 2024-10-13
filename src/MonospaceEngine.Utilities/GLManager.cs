@@ -8,10 +8,10 @@ namespace MonospaceEngine.Utilities {
 
 		public static GL Current;
 
-		public static TextureMinFilter TextureMinFilter { get; set; } = TextureMinFilter.LinearMipmapLinear;
+		public static TextureMinFilter TextureMinFilter { get; set; } = TextureMinFilter.Linear;
 		public static TextureMagFilter TextureMagFilter { get; set; } = TextureMagFilter.Linear;
 
-		public static bool TextureMipmapping { get; set; } = true;
+		public static bool TextureMipmapping { get; set; } = false;
 		
 		public unsafe static void SetDefaults(GL? gl = null) {
 			if(gl == null) gl = Current;
