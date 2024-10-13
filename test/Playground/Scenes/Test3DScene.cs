@@ -72,7 +72,7 @@ namespace Playground.Scenes {
 			Mouse.MouseMove += CameraMove;
 		}
 		
-		public override void Update(double delta) {
+		public override void Update(float delta) {
 			if(Keyboard?.IsKeyPressed(Key.Escape) ?? false) {
 				CursorToggle = !CursorToggle;
 			}
@@ -89,8 +89,8 @@ namespace Playground.Scenes {
 			Model.Position.Y += 0.12f * (float)delta;
 		}
 
-		public void Render() {
-			base.Render();
+		public override void Render(float delta) {
+			base.Render(delta);
 
 			MainShader.SetUniform("model", Model.ModelMatrix);
 			Model?.Render(MainShader);

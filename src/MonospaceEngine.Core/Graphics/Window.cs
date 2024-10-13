@@ -2,6 +2,7 @@ using MonospaceEngine.Configuration;
 using MonospaceEngine.Graphics.OpenGL;
 using MonospaceEngine.Graphics.Scene;
 using MonospaceEngine.Input;
+using MonospaceEngine.Utilities;
 using Silk.NET.Input;
 using Silk.NET.OpenGL;
 using Silk.NET.Windowing;
@@ -60,7 +61,7 @@ namespace MonospaceEngine.Graphics {
 			};
 			
 			Impl.Update += delta => {
-				Scene?.Update(delta);
+				Scene?.Update((float) delta);
 
 				if(Input != null) {
 					if(Scene != null) Scene.Keyboard = Input.Keyboards[0];
@@ -78,7 +79,7 @@ namespace MonospaceEngine.Graphics {
 					GLManager.EnableDefaults();
 					
 					GL.Clear((uint) (ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit));
-					Scene?.Render();
+					Scene?.Render((float) delta);
 					
 					var error = GL.GetError();
 

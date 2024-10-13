@@ -1,4 +1,5 @@
 using MonospaceEngine.Graphics.OpenGL;
+using MonospaceEngine.Utilities;
 using Silk.NET.OpenGL;
 
 namespace MonospaceEngine.Graphics {

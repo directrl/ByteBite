@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Reference Include="Silk.NET.OpenGL">
+        <HintPath>..\..\..\..\..\..\..\home\default\.nuget\packages\silk.net.opengl\2.21.0\lib\net5.0\Silk.NET.OpenGL.dll</HintPath>
+      </Reference>
+      <Reference Include="Silk.NET.Windowing.Common">
+        <HintPath>..\..\..\..\..\..\..\home\default\.nuget\packages\silk.net.windowing.common\2.21.0\lib\netstandard2.1\Silk.NET.Windowing.Common.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\MonospaceEngine.Utilities\MonospaceEngine.Utilities.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Silk.NET.OpenGL.Extensions.ImGui" Version="2.21.0" />
+    </ItemGroup>
+</Project>

@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Drawing;
 using Arch.Core;
+using ImGuiNET;
 using MonospaceEngine;
 using MonospaceEngine.Entity;
 using MonospaceEngine.Entity.Component;
@@ -9,6 +10,7 @@ using MonospaceEngine.Graphics;
 using MonospaceEngine.Graphics._3D;
 using MonospaceEngine.Graphics._3D.Light;
 using MonospaceEngine.Graphics.Scene;
+using MonospaceEngine.UI;
 using Silk.NET.Input;
 using Silk.NET.OpenGL;
 using Texture = MonospaceEngine.Graphics.Texture;
@@ -22,6 +24,8 @@ namespace Playground.Scenes {
 
 		private FreeCamera _freeCamera;
 
+		private ImGuiOverlay? _overlay;
+
 		public WorldTestScene() : base("world") {
 			_world = World.Create();
 			_freeCamera = new(KeyBindings);
@@ -29,6 +33,11 @@ namespace Playground.Scenes {
 
 		public override void OnLoad(Window window) {
 			base.OnLoad(window);
+
+			_overlay = new(window.Impl);
+			_overlay.Render += delta => {
+				ImGui.ShowDemoWindow();
+			};
 
 			Camera = new PerspectiveCamera(window) {
 				FOV = 60.0f,
@@ -54,7 +63,7 @@ namespace Playground.Scenes {
 		}
 
 		private QueryDescription _query = new QueryDescription().WithAll<WorldObject3D>();
-		public override void Update(double delta) {
+		public override void Update(float delta) {
 			_freeCamera.Update(Camera, Keyboard, Mouse, (float) delta);
 			
 			// _world.Query(in _query, (ref WorldObject3D o3d) => {
@@ -72,12 +81,14 @@ namespace Playground.Scenes {
 			Environment.Light.Position.Z = MathF.Cos((float) Window.Impl.Time) * 3;
 		}
 
-		public override void Render() {
-			base.Render();
+		public override void Render(float delta) {
+			base.Render(delta);
 
 			var shader = MainShader;
 			var camera = Camera;
 			_entityRenderSystem.Update(in shader, in camera);
+			
+			_overlay?.OnRender(delta);
 		}
 	}
 }

@@ -22,6 +22,7 @@
     <ProjectReference Include="..\MonospaceEngine.Configuration\MonospaceEngine.Configuration.csproj" />
     <ProjectReference Include="..\MonospaceEngine.Extensions\MonospaceEngine.Extensions.csproj" />
     <ProjectReference Include="..\MonospaceEngine.Logging\MonospaceEngine.Logging.csproj" />
+    <ProjectReference Include="..\MonospaceEngine.Utilities\MonospaceEngine.Utilities.csproj" />
   </ItemGroup>
   
   <ItemGroup>

@@ -1,7 +1,8 @@
 using System.Text;
+using Serilog;
 using Silk.NET.OpenGL;
 
-namespace MonospaceEngine.Graphics.OpenGL {
+namespace MonospaceEngine.Utilities {
 	
 	public static class GLManager {
 
@@ -13,7 +14,7 @@ namespace MonospaceEngine.Graphics.OpenGL {
 			
 			Current.CullFace(TriangleFace.Back);
 
-			if(Application.CurrentApplication?.DebugMode ?? false) {
+			if(Debugging.DebugMode) {
 				Current.Enable(EnableCap.DebugOutput);
 				Current.Enable(EnableCap.DebugOutputSynchronous);
 				Current.DebugMessageCallback(GlDebugPrint, null);
@@ -34,7 +35,7 @@ namespace MonospaceEngine.Graphics.OpenGL {
 				case GLEnum.NoError:
 					return false;
 				default:
-					Monospace.EngineLogger.Error($"OpenGL Error: {error}");
+					Log.Error($"OpenGL Error: {error}");
 					return true;
 			}
 		}
@@ -129,7 +130,7 @@ namespace MonospaceEngine.Graphics.OpenGL {
 			var m = new string((sbyte*) message, 0, length, Encoding.UTF8);
 			msg.Append(m);
 			
-			Monospace.EngineLogger.Debug(msg.ToString());
+			Log.Debug(msg.ToString());
 		}
 	}
 }

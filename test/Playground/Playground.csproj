@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\MonospaceEngine.Core\MonospaceEngine.Core.csproj" />
+    <ProjectReference Include="..\..\src\MonospaceEngine.UI\MonospaceEngine.UI.csproj" />
   </ItemGroup>
     
   <ItemGroup>

@@ -27,7 +27,9 @@ namespace MonospaceEngine.Graphics.Scene {
 			MainShader.Validate();
 		}
 
-		public override void Render() {
+		public override void Render(float delta) {
+			base.Render(delta);
+			
 			MainShader.Bind();
 
 			if(Camera != null) {

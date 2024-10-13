@@ -2,6 +2,8 @@ using System.Diagnostics;
 using MonospaceEngine.Configuration;
 using MonospaceEngine.Graphics.OpenGL;
 using MonospaceEngine.Logging;
+using MonospaceEngine.Utilities;
+using Serilog;
 using Serilog.Core;
 using Window = MonospaceEngine.Graphics.Window;
 
@@ -17,8 +19,6 @@ namespace MonospaceEngine {
 		
 		public string Id { get; private set; }
 		public bool Running { get; protected set; }
-		
-		public bool DebugMode { get; private set; }
 		
 		internal static Logger EngineLogger { get; private set; }
 		public static Logger? AppLogger { get; protected set; }
@@ -49,14 +49,15 @@ namespace MonospaceEngine {
 			var config = LoggerFactory.CreateDefaultConfiugration(LoggerPurpose.Engine);
 			
 			if(args.Contains("--debug")) {
-				DebugMode = true;
+				Debugging.DebugMode = true;
 				config.MinimumLevel.Debug();
 			} else {
 				config.MinimumLevel.Information();
 			}
 
 			EngineLogger = config.CreateLogger();
-			EngineLogger.Information($"Debugging enabled: {DebugMode}");
+			Log.Logger = EngineLogger;
+			EngineLogger.Information($"Debugging enabled: {Debugging.DebugMode}");
 			
 			Initialize();
 			Running = true;
@@ -81,7 +82,7 @@ namespace MonospaceEngine {
 			
 			Shutdown();
 			
-			if(DebugMode) {
+			if(Debugging.DebugMode) {
 				// Console.WriteLine("Debugging is enabled; press ESC to exit");
 				// while(Console.ReadKey(false).Key != ConsoleKey.Escape) {
 				// 	Thread.Sleep(100);

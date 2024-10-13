@@ -19,7 +19,7 @@ namespace Playground.Scenes {
 			test4Binding = KeyBindings.Register(new("test4", Key.ControlLeft, Key.ShiftLeft, Key.R));
 		}
 
-		public override void Update(double delta) {
+		public override void Update(float delta) {
 			if(testBinding.Pressed) {
 				Console.WriteLine("hello!");
 			}
@@ -47,7 +47,9 @@ namespace Playground.Scenes {
 				Console.WriteLine("aaaa");
 			}
 		}
-		
-		public override void Render() { }
+
+		public override void Render(float delta) {
+			base.Render(delta);
+		}
 	}
 }

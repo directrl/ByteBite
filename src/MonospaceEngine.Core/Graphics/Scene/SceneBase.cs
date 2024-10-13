@@ -1,12 +1,13 @@
 using MonospaceEngine.Graphics.Component;
 using MonospaceEngine.Graphics.OpenGL;
 using MonospaceEngine.Input;
+using MonospaceEngine.Utilities;
 using Silk.NET.Input;
 using Silk.NET.OpenGL;
 
 namespace MonospaceEngine.Graphics.Scene {
 	
-	public abstract class SceneBase : IDisposable, IRenderable {
+	public abstract class SceneBase : IDisposable {
 
 		public GL GL { get; protected set; }
 		public Window? Window { get; private set; }
@@ -31,12 +32,9 @@ namespace MonospaceEngine.Graphics.Scene {
 			Window = null;
 		}
 
-		public abstract void Update(double delta);
-		public abstract void Render();
-
-		void IRenderable.Render() {
+		public abstract void Update(float delta);
+		public virtual void Render(float delta) {
 			GL = GLManager.Current;
-			Render();
 		}
 
 		public void Dispose() {
