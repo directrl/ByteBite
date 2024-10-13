@@ -1,6 +1,6 @@
 using Silk.NET.OpenGL;
 
-namespace MonospaceEngine.Graphics.Interfaces {
+namespace MonospaceEngine.Graphics.Components {
 	
 	public interface IRenderable {
 

@@ -1,7 +1,7 @@
 using System.Numerics;
 using Monospace.Extensions;
 
-namespace MonospaceEngine.Graphics._3D.Camera {
+namespace MonospaceEngine.Graphics._3D {
 	
 	public class PerspectiveCamera : Camera3D {
 		

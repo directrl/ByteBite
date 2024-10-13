@@ -1,6 +1,6 @@
 using System.Numerics;
 
-namespace MonospaceEngine.Graphics._3D.Camera {
+namespace MonospaceEngine.Graphics._3D {
 	
 	public class OrthographicCamera : Camera3D {
 		

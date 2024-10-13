@@ -2,7 +2,7 @@ using System.Numerics;
 
 namespace MonospaceEngine.Graphics._3D {
 	
-	public class Model3D : Model {
+	public class Object3D : Model {
 
 		public Vector3 Position = new();
 		public Vector3 Rotation = new();
@@ -18,6 +18,6 @@ namespace MonospaceEngine.Graphics._3D {
 			}
 		}
 
-		public Model3D(string id, params Mesh[] meshes) : base(id, meshes) { }
+		public Object3D(string id, Mesh mesh, Material? material = null) : base(id, mesh, material) { }
 	}
 }

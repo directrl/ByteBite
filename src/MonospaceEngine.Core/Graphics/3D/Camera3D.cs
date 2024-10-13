@@ -4,7 +4,7 @@ using MonospaceEngine.Graphics.Interfaces;
 using MonospaceEngine.Graphics.OpenGL;
 using Silk.NET.OpenGL;
 
-namespace MonospaceEngine.Graphics._3D.Camera {
+namespace MonospaceEngine.Graphics._3D {
 	
 	public abstract class Camera3D : IShaderRenderable {
 
