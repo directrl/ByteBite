@@ -9,11 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Arch" Version="1.2.8" />
     <PackageReference Include="Silk.NET.Core" Version="2.21.0" />
     <PackageReference Include="Silk.NET.Input" Version="2.21.0" />
     <PackageReference Include="Silk.NET.OpenAL" Version="2.21.0" />
     <PackageReference Include="Silk.NET.OpenGL" Version="2.21.0" />
     <PackageReference Include="Silk.NET.Windowing" Version="2.21.0" />
+    <PackageReference Include="StbImageSharp" Version="2.30.15" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,5 +26,17 @@
   
   <ItemGroup>
     <EmbeddedResource Include="..\..\res\Monospace.Core\**\*"/>
+    <EmbeddedResource Update="..\..\res\Monospace.Core\Shaders\material.frag">
+      <Link>Shaders\material.frag</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Update="..\..\res\Monospace.Core\Shaders\material.vert">
+      <Link>Shaders\material.vert</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Update="..\..\res\Monospace.Core\Shaders\light.frag">
+      <Link>Shaders\light.frag</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Update="..\..\res\Monospace.Core\Shaders\light.vert">
+      <Link>Shaders\light.vert</Link>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

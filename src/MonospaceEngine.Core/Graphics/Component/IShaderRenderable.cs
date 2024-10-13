@@ -1,10 +1,10 @@
 using MonospaceEngine.Graphics.OpenGL;
 using Silk.NET.OpenGL;
 
-namespace MonospaceEngine.Graphics.Components {
+namespace MonospaceEngine.Graphics.Component {
 	
 	public interface IShaderRenderable {
 		
-		public void Render(GL gl, ShaderProgram program);
+		public void Render(ShaderProgram program);
 	}
 }

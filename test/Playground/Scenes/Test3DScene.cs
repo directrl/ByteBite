@@ -1,7 +1,6 @@
 using System.Numerics;
 using MonospaceEngine.Graphics;
 using MonospaceEngine.Graphics._3D;
-using MonospaceEngine.Graphics._3D.Camera;
 using MonospaceEngine.Graphics.Scene;
 using Silk.NET.Input;
 using Silk.NET.OpenGL;
@@ -11,7 +10,7 @@ namespace Playground.Scenes {
 	public class Test3DScene : Scene3D {
 
 		private Mesh? Mesh;
-		private Model3D? Model;
+		private Object3D? Model;
 
 		private bool CursorToggle = true;
 
@@ -24,7 +23,7 @@ namespace Playground.Scenes {
 				FOV = 60.0f
 			};
 			
-			Mesh = new ColoredMesh(window.GL, PrimitiveType.Triangles,
+			/*Mesh = new Mesh(PrimitiveType.Triangles,
 				new float[] {
 					// VO
 					-0.5f, 0.5f, 0.5f,
@@ -67,9 +66,9 @@ namespace Playground.Scenes {
 					// Back face
 					7, 6, 4, 7, 4, 5,
 				}
-			);
+			);*/
 
-			Model = new("quad", Mesh);
+			Model = new(Mesh);
 			Mouse.MouseMove += CameraMove;
 		}
 		
@@ -90,11 +89,11 @@ namespace Playground.Scenes {
 			Model.Position.Y += 0.12f * (float)delta;
 		}
 
-		public override void Render(GL gl) {
-			base.Render(gl);
+		public void Render() {
+			base.Render();
 
 			MainShader.SetUniform("model", Model.ModelMatrix);
-			Model?.Render(gl);
+			Model?.Render(MainShader);
 		}
 
 		Vector2 LastMousePosition;

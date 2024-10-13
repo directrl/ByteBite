@@ -1,4 +1,5 @@
 using MonospaceEngine.Configuration;
+using MonospaceEngine.Graphics.OpenGL;
 using MonospaceEngine.Graphics.Scene;
 using MonospaceEngine.Input;
 using Silk.NET.Input;
@@ -39,7 +40,8 @@ namespace MonospaceEngine.Graphics {
 			Impl.Load += () => {
 				GL = Impl.CreateOpenGL();
 				Input = Impl.CreateInput();
-				
+
+				GLManager.Current = GL;
 				GL.Viewport(Impl.FramebufferSize);
 				
 				foreach(var keyboard in Input.Keyboards) {
@@ -70,11 +72,13 @@ namespace MonospaceEngine.Graphics {
 			};
 			
 			Impl.Render += delta => {
+				Impl.MakeCurrent();
+				
 				if(GL != null) {
-					OpenGL.OpenGL.EnableDefaults(GL);
+					GLManager.EnableDefaults();
 					
 					GL.Clear((uint) (ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit));
-					Scene?.Render(GL);
+					Scene?.Render();
 					
 					var error = GL.GetError();
 
@@ -95,6 +99,7 @@ namespace MonospaceEngine.Graphics {
 		public void Dispose() {
 			GC.SuppressFinalize(this);
 			
+			Close();
 			Scene?.Dispose();
 			GL?.Dispose();
 			Input?.Dispose();
@@ -103,7 +108,7 @@ namespace MonospaceEngine.Graphics {
 		}
 
 		public void Close() {
-			Impl.IsClosing = true;
+			Impl.Close();
 			Scene?.OnUnload();
 		}
 

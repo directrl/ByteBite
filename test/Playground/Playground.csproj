@@ -10,5 +10,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\MonospaceEngine.Core\MonospaceEngine.Core.csproj" />
   </ItemGroup>
-
+    
+  <ItemGroup>
+      <EmbeddedResource Include="..\..\res\Playground\**\*"/>
+  </ItemGroup>
 </Project>

@@ -1,4 +1,5 @@
 using System.Numerics;
+using MonospaceEngine.Graphics.OpenGL;
 
 namespace MonospaceEngine.Graphics._3D {
 	
@@ -18,6 +19,11 @@ namespace MonospaceEngine.Graphics._3D {
 			}
 		}
 
-		public Object3D(string id, Mesh mesh, Material? material = null) : base(id, mesh, material) { }
+		public Object3D(Mesh mesh, Material? material = null) : base(mesh, material) { }
+
+		public override void Render(ShaderProgram shader) {
+			shader.SetUniform("model", ModelMatrix);
+			base.Render(shader);
+		}
 	}
 }

@@ -1,22 +1,23 @@
-using MonospaceEngine.Graphics.Interfaces;
+using MonospaceEngine.Graphics.Component;
+using MonospaceEngine.Graphics.OpenGL;
 using Silk.NET.OpenGL;
 
 namespace MonospaceEngine.Graphics {
 	
-	public class Model : IRenderable {
-		
-		public string Id { get; }
-		public Mesh[] Meshes { get; }
+	public class Model : IShaderRenderable {
 
-		public Model(string id, params Mesh[] meshes) {
-			Id = id;
-			Meshes = meshes;
+		public readonly Mesh Mesh;
+		public Material Material;
+
+		public Model(Mesh mesh, Material? material = null) {
+			Mesh = mesh;
+			Material = material ?? Material.DEFAULT_MATERIAL;
 		}
 
-		public void Render(GL gl) {
-			foreach(var mesh in Meshes) {
-				mesh.Render();
-			}
+		public virtual void Render(ShaderProgram shader) {
+			Material.Load(shader, "material");
+			Material.Texture.Bind();
+			Mesh.Render();
 		}
 	}
 }

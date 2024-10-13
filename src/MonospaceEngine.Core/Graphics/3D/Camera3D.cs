@@ -1,6 +1,6 @@
 using System.Numerics;
 using Monospace.Extensions;
-using MonospaceEngine.Graphics.Interfaces;
+using MonospaceEngine.Graphics.Component;
 using MonospaceEngine.Graphics.OpenGL;
 using Silk.NET.OpenGL;
 
@@ -23,8 +23,8 @@ namespace MonospaceEngine.Graphics._3D {
 			get => _yaw;
 			set {
 				_yaw = value;
-				Direction.X = MathF.Cos(value.ToRadians()) * MathF.Cos(_pitch.ToRadians());
-				Direction.Z = MathF.Sin(value.ToRadians()) * MathF.Cos(_pitch.ToRadians());
+				Direction.X = MathF.Cos(_yaw.ToRadians()) * MathF.Cos(_pitch.ToRadians());
+				Direction.Z = MathF.Sin(_yaw.ToRadians()) * MathF.Cos(_pitch.ToRadians());
 				Front = Vector3.Normalize(Direction);
 			}
 		}
@@ -34,15 +34,15 @@ namespace MonospaceEngine.Graphics._3D {
 			get => _pitch;
 			set {
 				_pitch = value;
-				Direction.X = MathF.Cos(_yaw.ToRadians()) * MathF.Cos(value.ToRadians());
-				Direction.Y = MathF.Sin(value.ToRadians());
-				Direction.Z = MathF.Sin(_yaw.ToRadians()) * MathF.Cos(value.ToRadians());
+				Direction.X = MathF.Cos(_yaw.ToRadians()) * MathF.Cos(_pitch.ToRadians());
+				Direction.Y = MathF.Sin(_pitch.ToRadians());
+				Direction.Z = MathF.Sin(_yaw.ToRadians()) * MathF.Cos(_pitch.ToRadians());
 				Front = Vector3.Normalize(Direction);
 			}
 		}
 
 		private Vector3 Direction = new();
-		private Vector3 Front = new(0.0f, 0.0f, -1.0f);
+		private Vector3 Front = new(0.0f, 0.0f, 1.0f);
 		private Vector3 Up = Vector3.UnitY;
 
 		private float _fov = 1.0f;
@@ -72,7 +72,14 @@ namespace MonospaceEngine.Graphics._3D {
 			};
 		}
 
-		public void Render(GL gl, ShaderProgram program) {
+		public void MoveUp(float amount) => Position += Up = Vector3.Multiply(ViewMatrix.PositiveY(), amount);
+		public void MoveDown(float amount) => Position -= Up = Vector3.Multiply(ViewMatrix.PositiveY(), amount);
+		public void MoveLeft(float amount) => Position -= Vector3.Multiply(ViewMatrix.PositiveX(), amount);
+		public void MoveRight(float amount) => Position += Vector3.Multiply(ViewMatrix.PositiveX(), amount);
+		public void MoveForward(float amount) => Position -= Direction = Vector3.Multiply(ViewMatrix.PositiveZ(), amount);
+		public void MoveBackward(float amount) => Position += Direction = Vector3.Multiply(ViewMatrix.PositiveZ(), amount);
+
+		public void Render(ShaderProgram program) {
 			RecalculateViewMatrix();
 			
 			program.SetUniform("projection", ProjectionMatrix);

@@ -48,6 +48,6 @@ namespace Playground.Scenes {
 			}
 		}
 		
-		public override void Render(GL gl) { }
+		public override void Render() { }
 	}
 }

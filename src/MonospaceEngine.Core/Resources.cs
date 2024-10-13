@@ -54,6 +54,7 @@ namespace MonospaceEngine {
 	public class ResourceType {
 		
 		public static readonly ResourceType SHADER = new("Shaders", "");
+		public static readonly ResourceType TEXTURE = new("Textures", ".png");
 			
 		public string Path { get; }
 		public string Extension { get; }

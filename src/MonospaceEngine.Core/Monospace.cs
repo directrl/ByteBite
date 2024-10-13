@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using MonospaceEngine.Configuration;
+using MonospaceEngine.Graphics.OpenGL;
 using MonospaceEngine.Logging;
 using Serilog.Core;
 using Window = MonospaceEngine.Graphics.Window;
@@ -16,6 +17,8 @@ namespace MonospaceEngine {
 		
 		public string Id { get; private set; }
 		public bool Running { get; protected set; }
+		
+		public bool DebugMode { get; private set; }
 		
 		internal static Logger EngineLogger { get; private set; }
 		public static Logger? AppLogger { get; protected set; }
@@ -36,11 +39,7 @@ namespace MonospaceEngine {
 			GameSettings = new(new FileInfo(Path.Combine(
 				Directories.ConfigRoot.FullName, "default.json")));
 
-			EngineResources = new("Monospace");
-
-			AppDomain.CurrentDomain.ProcessExit += (s, e) => {
-				Shutdown();
-			};
+			EngineResources = new("MonospaceEngine.Assets");
 		}
 		
 		public virtual void Initialize() { }
@@ -48,10 +47,16 @@ namespace MonospaceEngine {
 
 		public void Start(string[] args) {
 			var config = LoggerFactory.CreateDefaultConfiugration(LoggerPurpose.Engine);
-			if(args.Contains("--debug")) config.MinimumLevel.Debug();
-			else config.MinimumLevel.Information();
+			
+			if(args.Contains("--debug")) {
+				DebugMode = true;
+				config.MinimumLevel.Debug();
+			} else {
+				config.MinimumLevel.Information();
+			}
 
 			EngineLogger = config.CreateLogger();
+			EngineLogger.Information($"Debugging enabled: {DebugMode}");
 			
 			Initialize();
 			Running = true;
@@ -61,12 +66,27 @@ namespace MonospaceEngine {
 			var primaryWindow = Windows.First();
 			while(!primaryWindow.Impl.IsClosing && Running) {
 				foreach(var window in Windows) {
+					if(window.GL != null) {
+						GLManager.Current = window.GL;
+					}
+					
 					window.Impl.DoEvents();
 					
 					if(!window.Impl.IsClosing) window.Impl.DoUpdate();
 					if(window.Impl.IsClosing) continue;
+					
 					window.Impl.DoRender();
 				}
+			}
+			
+			Shutdown();
+			
+			if(DebugMode) {
+				// Console.WriteLine("Debugging is enabled; press ESC to exit");
+				// while(Console.ReadKey(false).Key != ConsoleKey.Escape) {
+				// 	Thread.Sleep(100);
+				// }
+				Thread.Sleep(100);
 			}
 		}
 

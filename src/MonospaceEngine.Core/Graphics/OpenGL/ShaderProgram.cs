@@ -29,6 +29,34 @@ namespace MonospaceEngine.Graphics.OpenGL {
 			
 			gl.UniformMatrix4(location, 1, false, (float*) &value);
 		}
+		
+		public unsafe void SetUniform(string name, Vector3 value) {
+			int location = gl.GetUniformLocation(Id, name);
+			if(location < 0) throw new PlatformException($"Could not find the uniform location for {name}");
+			
+			gl.Uniform3(location, 1, (float*) &value);
+		}
+		
+		public unsafe void SetUniform(string name, bool value) {
+			int location = gl.GetUniformLocation(Id, name);
+			if(location < 0) throw new PlatformException($"Could not find the uniform location for {name}");
+			
+			gl.Uniform1(location, 1, (int*) &value);
+		}
+		
+		public unsafe void SetUniform(string name, int value) {
+			int location = gl.GetUniformLocation(Id, name);
+			if(location < 0) throw new PlatformException($"Could not find the uniform location for {name}");
+			
+			gl.Uniform1(location, 1, &value);
+		}
+		
+		public unsafe void SetUniform(string name, float value) {
+			int location = gl.GetUniformLocation(Id, name);
+			if(location < 0) throw new PlatformException($"Could not find the uniform location for {name}");
+			
+			gl.Uniform1(location, 1, &value);
+		}
 
 		public void Build() {
 			List<uint> shaderIds = new();
