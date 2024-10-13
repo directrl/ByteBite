@@ -47,7 +47,7 @@ namespace MonospaceEngine.Entity {
 			}
 		);*/
 
-		public static readonly Mesh MESH = new(PrimitiveType.Triangles,
+		/*public static readonly Mesh MESH = new(PrimitiveType.Triangles,
 			new float[] {
 				-0.5f, -0.5f, -0.5f,
 				0.5f, -0.5f, -0.5f,
@@ -184,12 +184,17 @@ namespace MonospaceEngine.Entity {
 				0.0f,  1.0f,  0.0f,
 				0.0f,  1.0f,  0.0f,
 				0.0f,  1.0f,  0.0f
-			}*/
+			}#1#
+		);*/
+
+		public static readonly Model VOXEL_MODEL = ModelLoader.Load(
+			Monospace.EngineResources[ResourceType.MODEL, "voxel.gltf"]
 		);
 
 		public static Arch.Core.Entity Create(World world) {
 			return world.Create(
-				new WorldObject3D { Object = new(MESH, Material.DEFAULT_MATERIAL) }
+				new WorldObject3D { Object = new(VOXEL_MODEL) }
+				//new WorldObject3D { Object = new(MESH, Material.DEFAULT_MATERIAL) }
 			);
 		}
 	}

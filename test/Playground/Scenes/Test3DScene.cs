@@ -68,7 +68,7 @@ namespace Playground.Scenes {
 				}
 			);*/
 
-			Model = new(Mesh);
+			//Model = new(Mesh);
 			Mouse.MouseMove += CameraMove;
 		}
 		

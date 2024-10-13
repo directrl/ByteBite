@@ -14,13 +14,13 @@ namespace MonospaceEngine.Graphics {
 			DiffuseColor = new(1, 1, 1),
 			SpecularColor = new(1, 1, 1),
 			Metallic = 64,
-			Texture = Texture.DEFAULT_TEXTURE
+			DiffuseMaps = new() { Texture.DEFAULT_TEXTURE }
 		};
 		
 		public enum Type {
-		
-			Light,
-			Regular
+			
+			Regular,
+			Light
 		}
 
 		public enum SpecularType {
@@ -40,7 +40,10 @@ namespace MonospaceEngine.Graphics {
 
 		public float Metallic;
 
-		public Texture Texture;
+		public List<Texture> DiffuseMaps;
+		public List<Texture> SpecularMaps;
+		public List<Texture> NormalMaps;
+		public List<Texture> HeightMaps;
 
 		public void Load(ShaderProgram program, string target) {
 			program.SetUniform($"{target}.type", (int) mType);
@@ -52,6 +55,10 @@ namespace MonospaceEngine.Graphics {
 			program.SetUniform($"{target}.diffuse", DiffuseColor);
 			program.SetUniform($"{target}.specular", SpecularColor);
 			program.SetUniform($"{target}.metallic", Metallic);
+			
+			// TODO how do you bind multiple textures???
+			if(DiffuseMaps is { Count: > 0 }) DiffuseMaps[0].Bind();
+			else Texture.DEFAULT_TEXTURE.Bind();
 		}
 	}
 }

@@ -76,7 +76,7 @@ namespace MonospaceEngine.Graphics {
 				Impl.MakeCurrent();
 				
 				if(GL != null) {
-					GLManager.EnableDefaults();
+					GLManager.SetDefaults();
 					
 					GL.Clear((uint) (ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit));
 					Scene?.Render((float) delta);

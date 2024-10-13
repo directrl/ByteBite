@@ -6,19 +6,26 @@ namespace MonospaceEngine.Utilities {
 	
 	public static class GLManager {
 
-		public static GL Current { get; set; }
+		public static GL Current;
+
+		public static TextureMinFilter TextureMinFilter { get; set; } = TextureMinFilter.LinearMipmapLinear;
+		public static TextureMagFilter TextureMagFilter { get; set; } = TextureMagFilter.Linear;
+
+		public static bool TextureMipmapping { get; set; } = true;
 		
-		public unsafe static void EnableDefaults() {
-			Current.Enable(EnableCap.DepthTest);
-			Current.Enable(EnableCap.CullFace);
+		public unsafe static void SetDefaults(GL? gl = null) {
+			if(gl == null) gl = Current;
 			
-			Current.CullFace(TriangleFace.Back);
+			gl.Enable(EnableCap.DepthTest);
+			gl.Enable(EnableCap.CullFace);
+			
+			gl.CullFace(TriangleFace.Back);
 
 			if(Debugging.DebugMode) {
-				Current.Enable(EnableCap.DebugOutput);
-				Current.Enable(EnableCap.DebugOutputSynchronous);
-				Current.DebugMessageCallback(GlDebugPrint, null);
-				Current.DebugMessageControl(
+				gl.Enable(EnableCap.DebugOutput);
+				gl.Enable(EnableCap.DebugOutputSynchronous);
+				gl.DebugMessageCallback(GlDebugPrint, null);
+				gl.DebugMessageControl(
 					DebugSource.DontCare,
 					DebugType.DontCare,
 					DebugSeverity.DontCare,
@@ -26,6 +33,17 @@ namespace MonospaceEngine.Utilities {
 					true
 				);
 			}
+		}
+
+		public static void SetDefaultsForTextureCreation(GL? gl = null) {
+			if(gl == null) gl = Current;
+
+			gl.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter,
+				(int) TextureMinFilter);
+			gl.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter,
+				(int) TextureMagFilter);
+			
+			if(TextureMipmapping) gl.GenerateMipmap(TextureTarget.Texture2D);
 		}
 
 		public static bool CheckError() {

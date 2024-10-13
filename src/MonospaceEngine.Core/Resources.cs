@@ -9,6 +9,9 @@ namespace MonospaceEngine {
 		public string Namespace { get; }
 		public string Name { get; }
 
+		public string FullPath { get; }
+		public string UID => FullPath;
+
 		public Resource(ResourceType type, string _namespace, string name, Assembly? assembly = null) {
 			if(assembly == null) {
 				Assembly = Assembly.GetCallingAssembly();
@@ -19,6 +22,8 @@ namespace MonospaceEngine {
 			Type = type;
 			Namespace = _namespace;
 			Name = name;
+
+			FullPath = _namespace + "/" + type.Path + "/" + name;
 		}
 
 		public Stream? GetStream() {
@@ -55,6 +60,7 @@ namespace MonospaceEngine {
 		
 		public static readonly ResourceType SHADER = new("Shaders", "");
 		public static readonly ResourceType TEXTURE = new("Textures", ".png");
+		public static readonly ResourceType MODEL = new("Models", "");
 			
 		public string Path { get; }
 		public string Extension { get; }

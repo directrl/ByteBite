@@ -1,9 +1,13 @@
 using System.Numerics;
+using MonospaceEngine.Graphics.Component;
 using MonospaceEngine.Graphics.OpenGL;
+using MonospaceEngine.Utilities;
 
 namespace MonospaceEngine.Graphics._3D {
 	
 	public class Object3D : Model {
+
+		//public Model? Model;
 
 		public Vector3 Position = new();
 		public Vector3 Rotation = new();
@@ -18,8 +22,8 @@ namespace MonospaceEngine.Graphics._3D {
 				return positionMatrix * rotationMatrix * scaleMatrix;
 			}
 		}
-
-		public Object3D(Mesh mesh, Material? material = null) : base(mesh, material) { }
+		
+		public Object3D(Model model) : base(GLManager.Current, model) { }
 
 		public override void Render(ShaderProgram shader) {
 			shader.SetUniform("model", ModelMatrix);

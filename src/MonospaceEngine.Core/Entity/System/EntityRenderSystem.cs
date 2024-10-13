@@ -24,7 +24,6 @@ namespace MonospaceEngine.Entity.System {
 
 				foreach(var i in chunk) {
 					ref var o3d = ref o3ds[i];
-					shader.SetUniform("model", o3d.Object.ModelMatrix);
 					o3d.Object.Render(shader);
 				}
 			}

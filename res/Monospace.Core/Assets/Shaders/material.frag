@@ -30,7 +30,7 @@ uniform Material material;
 uniform Light light;
 
 void main() {
-	if(material.type == 0) { // light
+	if(material.type == 1) { // light
 		fragColor = vec4(1.0);
 	} else {
 		// ambient

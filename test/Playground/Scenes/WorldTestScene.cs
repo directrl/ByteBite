@@ -36,7 +36,7 @@ namespace Playground.Scenes {
 
 			_overlay = new(window.Impl);
 			_overlay.Render += delta => {
-				ImGui.ShowDemoWindow();
+				//ImGui.ShowDemoWindow();
 			};
 
 			Camera = new PerspectiveCamera(window) {
@@ -50,10 +50,13 @@ namespace Playground.Scenes {
 				}
 			};
 
-			var mat = Material.DEFAULT_MATERIAL;
-			mat.Texture = Texture.Create(Program.AppResources[ResourceType.TEXTURE, "cube"]);
-			mat.Albedo = Color.FromArgb(255, 0, 100);
-			_world.Create(new WorldObject3D { Object = new(VoxelEntity.MESH, mat) });
+			// var mat = Material.DEFAULT_MATERIAL;
+			// mat.Texture = Texture.Load(Program.AppResources[ResourceType.TEXTURE, "cube"]);
+			// mat.Albedo = Color.FromArgb(255, 0, 100);
+			//
+			// _world.Create(new WorldObject3D { Object = new(VoxelEntity.MESH, mat) });
+
+			VoxelEntity.Create(_world);
 
 			_entityRenderSystem = new(_world, GL);
 
@@ -74,7 +77,7 @@ namespace Playground.Scenes {
 			// });
 			
 			//Environment.Light.Position.X += 0.5f * (float) delta;
-			Console.WriteLine(Camera.Position);
+			//Console.WriteLine(Camera.Position);
 
 			Environment.Light.Position.X = MathF.Sin((float) Window.Impl.Time) * 3;
 			Environment.Light.Position.Y = -MathF.Sin((float) Window.Impl.Time) * 3;
